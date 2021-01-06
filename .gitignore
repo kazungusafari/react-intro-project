@@ -59,7 +59,7 @@ typings/
 .rts2_cache_es/
 .rts2_cache_umd/
 
-# Optional REPL history
+# Optional REPL historygit@github.com:kazungusafari/react-intro-project.git
 .node_repl_history
 
 # Output of 'npm pack'
@@ -102,3 +102,10 @@ dist
 
 # TernJS port file
 .tern-port
+
+
+# Vscode
+.vscode/
+
+dist/
+.cache/
