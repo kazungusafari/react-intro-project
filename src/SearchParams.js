@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import pet, { ANIMALS } from "@frontendmasters/pet";
 import useDropdown from "./useDropdown";
 import Results from "./Results";
-import { Router } from "@reach/router";
 
 const SearchParams = () => {
   const [location, setLocation] = useState("Seattle,WA");
@@ -12,12 +11,11 @@ const SearchParams = () => {
   const [pets, setPets] = useState([]);
 
   async function requestPets() {
-    const { animals } = await pet.animal({
+    const { animals } = await pet.animals({
       location,
       breed,
       type: animal,
     });
-
     setPets(animals || []);
   }
 
