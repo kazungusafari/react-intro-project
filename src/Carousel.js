@@ -1,16 +1,18 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Carousel extends Component {
+class Carousel extends React.Component {
   state = {
     photos: [],
     active: 0,
   };
   static getDerivedStateFromProps({ media }) {
-    let photos = ["http://placeorgi.com/600/600"];
+    let photos = ["http://placecorgi.com/600/600"];
 
     if (media.length) {
       photos = media.map(({ large }) => large);
     }
+
+    return { photos };
   }
   handleIndexClick = (event) => {
     this.setState({
@@ -19,10 +21,9 @@ class Carousel extends Component {
   };
   render() {
     const { photos, active } = this.state;
-
     return (
       <div className="carousel">
-        <img src={photos[active]} alt="animal"></img>
+        <img src={photos[active]} alt="animal" />
         <div className="carousel-smaller">
           {photos.map((photo, index) => (
             <img
@@ -32,7 +33,7 @@ class Carousel extends Component {
               src={photo}
               className={index === active ? "active" : ""}
               alt="animal thumbnail"
-            ></img>
+            />
           ))}
         </div>
       </div>

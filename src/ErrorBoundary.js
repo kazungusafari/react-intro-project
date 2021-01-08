@@ -9,6 +9,10 @@ class ErrorBoundary extends Component {
     redirect: false,
   };
 
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
   componentDidCatch(error, info) {
     console.error("Error boundary caught an error", error, info);
   }
@@ -19,7 +23,7 @@ class ErrorBoundary extends Component {
   }
   render() {
     if (this.state.redirect) {
-      return <Redirect to="/"></Redirect>;
+      return <Redirect to="/" />;
     }
 
     if (this.state.hasError) {
@@ -34,3 +38,5 @@ class ErrorBoundary extends Component {
     return this.props.children;
   }
 }
+
+export default ErrorBoundary;
