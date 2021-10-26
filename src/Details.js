@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import pet from "@frontendmasters/pet";
 import { navigate } from "@reach/router";
 import Carousel from "./Carousel";
@@ -6,8 +6,9 @@ import Modal from "./Modal";
 import ErrorBoundary from "./ErrorBoundary";
 import ThemeContext from "./ThemeContext";
 
-class Details extends React.Component {
+class Details extends Component {
   state = { loading: true, showModal: false };
+
   componentDidMount() {
     pet
       .animal(this.props.id)
@@ -25,8 +26,11 @@ class Details extends React.Component {
       })
       .catch((err) => this.setState({ error: err }));
   }
+
   toggleModal = () => this.setState({ showModal: !this.state.showModal });
+
   adopt = () => navigate(this.state.url);
+
   render() {
     if (this.state.loading) {
       return <h1>loading … </h1>;
